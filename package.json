@@ -1,0 +1,17 @@
+{
+  "name": "electron-adventure",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/achingbrain/eletron-adventure"
+  },
+  "license": "ISC",
+  "bin": "./index.js",
+  "dependencies": {
+    "spectron": "^3.6.4",
+    "workshopper": "^2.7.0",
+    "workshopper-boilerplate": "^1.1.2",
+    "workshopper-exercise": "^3.0.1",
+    "workshopper-wrappedexec": "^0.1.1"
+  }
+}

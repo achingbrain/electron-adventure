@@ -1,0 +1,15 @@
+{
+  "title": "Electron Adventure",
+  "subtitle": "Forging ahead with Electron",
+  "exercise": {
+    "hello_world": "Your first Electron app"
+  },
+  "common": {
+
+  },
+  "exercises": {
+    "hello_world": {
+
+    }
+  }
+}
