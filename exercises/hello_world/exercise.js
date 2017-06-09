@@ -1,7 +1,6 @@
 const exercise = require('workshopper-exercise')()
 const Application = require('spectron').Application
 const path = require('path')
-const assert = require('assert')
 const verifyProcessor = require('../../lib/verify-processor')
 
 const BUTTON_SELECTOR = '#my-first-button'

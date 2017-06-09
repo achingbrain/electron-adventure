@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 
 const workshopper = require('workshopper-adventure')
-const path = require('path')
-
-const fpath = (f) => path.join(__dirname, f)
 
 const workshop = workshopper({
   appDir: __dirname,
