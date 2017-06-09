@@ -2,10 +2,21 @@
   "title": "Electron Adventure",
   "subtitle": "Forging ahead with Electron",
   "exercise": {
-    "hello_world": "Your first Electron app"
+    "hello_world": "My first Electron app"
   },
   "common": {
-
+    "exercise": {
+      "pass": {
+        "element_present": "Element {{element}} was present",
+        "element_not_present": "Element {{element}} was not present",
+        "element_contained_text": "Element {{element}} contained text {{text}}"
+      },
+      "fail": {
+        "element_present": "Element {{element}} was not present",
+        "element_not_present": "Element {{element}} was present",
+        "element_contained_text": "Element {{element}} did not contain text {{text}}"
+      }
+    }
   },
   "exercises": {
     "hello_world": {

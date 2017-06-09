@@ -1,15 +1,21 @@
 #!/usr/bin/env node
 
-const workshopper = require('workshopper')
+const workshopper = require('workshopper-adventure')
 const path = require('path')
 
 const fpath = (f) => path.join(__dirname, f)
 
-workshopper({
-  name: 'electron-adventure',
-  title: 'Electron Adventure',
-  subtitle: 'Learn how to build Electron apps',
+const workshop = workshopper({
   appDir: __dirname,
-  menuItems: [],
-  exerciseDir: fpath('./exercises/')
+  languages: ['en'],
+  header: require('workshopper-adventure/default/header'),
+  footer: require('workshopper-adventure/default/footer')
+})
+
+workshop.addAll(require('./exercises/menu.json'))
+workshop.execute(process.argv.slice(2))
+
+process.on('unhandledRejection', error => {
+  console.error(error.stack ? error.stack : error.toString())
+  throw error
 })

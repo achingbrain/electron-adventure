@@ -9,7 +9,7 @@
   "bin": "./index.js",
   "dependencies": {
     "spectron": "^3.6.4",
-    "workshopper": "^2.7.0",
+    "workshopper-adventure": "^6.0.2",
     "workshopper-boilerplate": "^1.1.2",
     "workshopper-exercise": "^3.0.1",
     "workshopper-wrappedexec": "^0.1.1"
