@@ -7,20 +7,24 @@
   "common": {
     "exercise": {
       "pass": {
-        "element_present": "Element {{element}} was present",
-        "element_not_present": "Element {{element}} was not present",
-        "element_contained_text": "Element {{element}} contained text {{text}}"
+        "element_present": "Element '{{element}}' was present",
+        "element_not_present": "Element '{{element}}' was not present",
+        "element_visible": "Element '{{element}}' was visible",
+        "element_not_visible": "Element '{{element}}' was not visible",
+        "element_contained_text": "Element '{{element}}' contained text '{{text}}'"
       },
       "fail": {
-        "element_present": "Element {{element}} was not present",
-        "element_not_present": "Element {{element}} was present",
-        "element_contained_text": "Element {{element}} did not contain text {{text}}"
+        "element_present": "Element '{{element}}' was not present when it should have been",
+        "element_not_present": "Element '{{element}}' was present when it should not have been",
+        "element_visible": "Element '{{element}}' was not visible when it should have been",
+        "element_not_visible": "Element '{{element}}' was visible when it should not have been",
+        "element_contained_text": "Element '{{element}}' did not contain text '{{text}}'"
       }
     }
   },
   "exercises": {
     "hello_world": {
-
+      "expected_text": "Electron is great!"
     }
   }
 }

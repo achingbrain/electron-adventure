@@ -11,6 +11,7 @@
     "lint": "standard"
   },
   "dependencies": {
+    "chalk": "^1.1.3",
     "spectron": "^3.6.4",
     "workshopper-adventure": "^6.0.2",
     "workshopper-boilerplate": "^1.1.2",

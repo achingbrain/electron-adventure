@@ -1,19 +1,16 @@
 const exercise = require('workshopper-exercise')()
 const Application = require('spectron').Application
-const path = require('path')
 const verifyProcessor = require('../../lib/verify-processor')
+const appPath = require('../../lib/app-path')
 
 const BUTTON_SELECTOR = '#my-first-button'
 const TEXT_SELECTOR = '#my-first-text'
-const TEXT = 'Electron is greats'
 
 let app
 
 exercise.addSetup(async (mode, callback) => {
-  const appPath = path.resolve(process.cwd(), exercise.args[0])
-
   app = new Application({
-    path: appPath
+    path: appPath()
   })
 
   await app.start()
@@ -29,34 +26,33 @@ exercise.addCleanup(async (mode, passed, callback) => {
   callback()
 })
 
-exercise.addVerifyProcessor(verifyProcessor(exercise, async (test, done) => {
-  // if the dev tools are open, windowCount will be 2
-  const windowCount = await app.client.getWindowCount()
-  // so select the main window
-  await app.client.windowByIndex(windowCount === 2 ? 1 : 0)
+exercise.addVerifyProcessor(verifyProcessor(exercise, async (test) => {
+  await app.client.windowHandles()
+  await app.client.waitUntil(() => app.client.getWindowCount().then((count) => count === 2))
+  await app.client.windowByIndex(1)
 
-  const buttonList = await app.client.elements(TEXT_SELECTOR)
-
-  test.notEmpty(buttonList, 'element_present', {
+  await test.notEmpty(app.client.elements(BUTTON_SELECTOR).then(result => result.value), 'element_present', {
     element: BUTTON_SELECTOR
   })
 
-  const textList = await app.client.elements(TEXT_SELECTOR)
+  const elements = await app.client.elements(TEXT_SELECTOR).then(result => result.value)
 
-  test.empty(textList, 'element_not_present', {
+  if (elements.length) {
+    await test.falsey(app.client.isVisible(TEXT_SELECTOR), 'element_not_visible', {
+      element: TEXT_SELECTOR
+    })
+  }
+
+  await app.client.click(BUTTON_SELECTOR)
+
+  await test.truthy(app.client.isVisible(TEXT_SELECTOR), 'element_visible', {
     element: TEXT_SELECTOR
   })
 
-  await app.client.click(BUTTON_SELECTOR)
-  await app.client.waitForExist(TEXT_SELECTOR)
-  const text = await app.client.getText(TEXT_SELECTOR)
-
-  test.equals(TEXT, text, 'element_contained_text', {
+  await test.equals(exercise.i18n('expected_text'), app.client.getText(TEXT_SELECTOR), 'element_contained_text', {
     element: TEXT_SELECTOR,
-    text: TEXT
+    text: exercise.i18n('expected_text')
   })
-
-  done()
 }))
 
 module.exports = exercise
