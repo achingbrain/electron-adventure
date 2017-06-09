@@ -16,6 +16,7 @@
     "workshopper-adventure": "^6.0.2",
     "workshopper-boilerplate": "^1.1.2",
     "workshopper-exercise": "^3.0.1",
+    "workshopper-verify-processor": "0.0.2",
     "workshopper-wrappedexec": "^0.1.1"
   },
   "devDependencies": {

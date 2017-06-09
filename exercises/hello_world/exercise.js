@@ -35,17 +35,13 @@ exercise.addVerifyProcessor(verifyProcessor(exercise, async (test) => {
     element: BUTTON_SELECTOR
   })
 
-  const elements = await app.client.elements(TEXT_SELECTOR).then(result => result.value)
-
-  if (elements.length) {
-    await test.falsey(app.client.isVisible(TEXT_SELECTOR), 'element_not_visible', {
-      element: TEXT_SELECTOR
-    })
-  }
+  await test.notVisible(app, TEXT_SELECTOR, 'element_not_visible', {
+    element: TEXT_SELECTOR
+  })
 
   await app.client.click(BUTTON_SELECTOR)
 
-  await test.truthy(app.client.isVisible(TEXT_SELECTOR), 'element_visible', {
+  await test.visible(app, TEXT_SELECTOR, 'element_visible', {
     element: TEXT_SELECTOR
   })
 
