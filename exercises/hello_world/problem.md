@@ -20,11 +20,11 @@ This should start the basic app and display `Well hey there!!!` in a window.
 
 To finish this exercise, open `/src/index.html` and create a button with the id 'my-first-button' which when clicked shows the text 'Electron is great' in an element with the id 'my-first-text'.
 
-Once you have done this, package your application and verify your steps:
+Once you have done this, package your application and verify your steps from the `my-first-app` directory:
 
 ```
 $ npm run package
-$ electron-adventure verify /path/to/my-first-app/out/my-first-app-darwin-x64/my-first-app.app/Contents/MacOS/my-first-app
+$ electron-adventure verify
 ```
 
 Don't forget to run `electron-forge package` after each change to your app.
