@@ -12,7 +12,10 @@
   },
   "dependencies": {
     "chalk": "^1.1.3",
+    "electron-machine-id": "^1.0.9",
+    "faker": "^4.1.0",
     "spectron": "^3.6.4",
+    "udp-chat-server": "0.0.4",
     "workshopper-adventure": "^6.0.2",
     "workshopper-boilerplate": "^1.1.2",
     "workshopper-exercise": "^3.0.1",

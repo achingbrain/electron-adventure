@@ -1,6 +1,7 @@
 [
   "hello_world",
   "react",
-  "offline",
-  "drag_and_drop"
+  "ipc_send",
+  "ipc_receive",
+  "files"
 ]

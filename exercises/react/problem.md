@@ -1,67 +1,89 @@
 # React
 
-Electron does not have an opinion when it comes to UI frameworks or languages.  This is good because it can be a general container for whatever UI rendering technology your team wishes to use.
-
 We are going to add support for ES6, React & LESS to our app.
 
-First install `electron-prebuilt-compile` and save it as a dev dependency.
+Since this is an electron workshopper we're going to use a repo that has already contains the relevant boilerplate.
+
+Clone the repo `achingbrain/electron-adventure-solution` and check out the `react` tag.
 
 ```
-$ npm install --save-dev electron-prebuilt-compile
+$ git clone https://github.com/achingbrain/electron-adventure-solution
+$ cd electron-adventure-solution
+$ git checkout react
+$ npm i
 ```
 
-Then install `react` and friends:
+This should give you the basic react/redux app structure including a store and some dispatchable actions.
+
+We'll need a few more dependencies to make it all work though, so first install [`electron-prebuilt-compile`](electron-prebuilt-compile) and save it as a dev dependency.
 
 ```
-$ npm install --save react react-dom prop-types react-redux react-router-redux react-router ace-css
+$ npm install --save-dev electron-prebuilt-compile@1.6.11
 ```
 
-Update your `index.html` to look like this:
+`electron-prebuilt-compile` natively understands `jsx` and `less` files and will transpile them on the fly for us.  It will throw an error if it is installed as a range instead of a version, hence appending `@1.6.11` above.
+
+Create `/src/index.html`:
 
 ```html
+<!-- /src/index.html -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>My first app</title>
+    <title>Chatr</title>
     <link rel='stylesheet' type='text/less' href='main.less' />
   </head>
   <body class='m0 bg-white'>
     <div id='app-root'></div>
-    <script src='main.jsx'></script>
+    <script type="application/javascript" src='main.jsx'></script>
   </body>
 </html>
 ```
 
-Next, create the `main.less` and `main.jsx` files
+Then `/src/main.less`:
 
 ```less
-// main.less
-@import (css, inline) 'ace-css/css/ace.css';
+// /src/main.less
+@import (css, inline) '../node_modules/ace-css/css/ace.css';
+
+html, body, #app-root {
+  height: 100%
+}
 ```
+
+Finally pull it all together with `/src/main.jsx`:
 
 ```js
-// main.jsx
+// /src/main.jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Root from './components/root'
+import { Provider } from 'react-redux'
+import configureStore from './store/create'
+import Page from './containers/page'
+import User from './containers/user'
+import IPC from './containers/ipc'
 
-ReactDOM.render(<Root store={store} history={history} />, document.getElementById('app-root'))
+const store = configureStore()
+
+ReactDOM.render((
+  <Provider store={store}>
+    <IPC>
+      <User>
+        <Page />
+      </User>
+    </IPC>
+  </Provider>
+), document.getElementById('app-root'))
 ```
 
-
-
-
+Now start the app and set your username & avatar:
 
 ```
-$ electron-forge init my-first-app
-$ cd my-first-app
 $ npm run start
 ```
 
-This should start the basic app and display `Well hey there!!!` in a window.
-
-To finish this exercise, open `/src/index.html` and create a button with the id 'my-first-button' which when clicked shows the text 'Electron is great' in an element with the id 'my-first-text'.
+## Verify
 
 Once you have done this, package your application and verify your steps:
 
@@ -78,4 +100,5 @@ Don't forget to run `electron-forge package` after each change to your app.
 
 ## References
 
-1. [electron-forge](https://www.npmjs.com/package/electron-forge)
+1. [electron-prebuilt-compile](https://github.com/electron-userland/electron-prebuilt-compile)
+2. [never-do-this](https://xkcd.com/927/)

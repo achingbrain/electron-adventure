@@ -25,6 +25,30 @@
   "exercises": {
     "hello_world": {
       "expected_text": "Electron is great!"
+    },
+    "ipc_send": {
+      "pass": {
+        "event_type": "event.type was 'message'",
+        "data_present": "event.data was present",
+        "data_sender_present": "event.data.sender was present",
+        "machine_id": "Correct machine id present",
+        "user_name": "Sender name was '{{name}}'",
+        "user_avatar": "Sender avatar was '{{avatar}}'",
+        "data_message_present": "event.data.message was present",
+        "message_type": "event.data.message.type was 'text'",
+        "message_text": "event.data.message.text was correct"
+      },
+      "fail": {
+        "event_type": "event.type should have been 'message'",
+        "data_present": "event.data was not present",
+        "data_sender_present": "message.data.sender was not present",
+        "machine_id": "Wrong machine id present",
+        "user_name": "Sender name was not '{{name}}'",
+        "user_avatar": "Sender avatar was not '{{avatar}}'",
+        "data_message_present": "event.data.message was not present",
+        "message_type": "event.message.type should have been 'text' - it was '{{type}}'",
+        "message_text": "event.data.message.text was not correct"
+      }
     }
   }
 }
