@@ -13,9 +13,8 @@ exercise.addVerifyProcessor(verifyProcessor(exercise, async (test) => {
   await exercise.app.client.windowHandles()
   await exercise.app.client.waitUntil(() => exercise.app.client.getWindowCount().then((count) => count === 2))
   await exercise.app.client.windowByIndex(1)
-
   await exercise.app.client.execute(() => {
-    store && store.dispatch({
+    window && window.store && window.store.dispatch({
       type: 'RESET',
       payload: {}
     })
