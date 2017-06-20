@@ -22,3 +22,11 @@ $ sudo npm install -g electron-adventure
 ```
 
 [Okay](https://xkcd.com/149/).
+
+## Usage
+
+After installing, start the workshop and follow the instructions:
+
+```sh
+$ electron-adventure
+```
