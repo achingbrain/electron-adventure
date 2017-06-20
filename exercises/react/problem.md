@@ -85,18 +85,23 @@ $ npm run start
 
 ## Verify
 
-Once you have done this, package your application and verify your steps:
+Once you have done this verify your steps from the `chatr` directory:
 
 ```
-$ npm run package
-$ electron-adventure verify /path/to/my-first-app/out/my-first-app-darwin-x64/my-first-app.app/Contents/MacOS/my-first-app
+$ electron-adventure verify
 ```
 
-Don't forget to run `electron-forge package` after each change to your app.
+You can skip the build phase by using:
+
+```
+$ electron-adventure verify --nobuild
+```
+
+Although if you do this you should run `npm run package` first.
 
 ## Hints
 
-* Use simple DOM methods to show the button, no framework required
+* If your redux store becomes unusable, you can reset it from the settings page
 
 ## References
 

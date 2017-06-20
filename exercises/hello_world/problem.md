@@ -24,14 +24,19 @@ To finish this exercise, open `/src/index.html` and create a button with the id 
 
 ## Verify
 
-Once you have done this, package your application and verify your steps from the `chatr` directory:
+Once you have done this verify your steps from the `chatr` directory:
 
 ```
-$ npm run package
 $ electron-adventure verify
 ```
 
-Don't forget to run `electron-forge package` after each change to your app.
+You can skip the build phase by using:
+
+```
+$ electron-adventure verify --nobuild
+```
+
+Although if you do this you should run `npm run package` first.
 
 ## Hints
 

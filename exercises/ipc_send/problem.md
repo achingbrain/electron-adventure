@@ -70,7 +70,7 @@ import chat from 'udp-chat-server'
 
 const send = chat({
   onMessage: ({type, data}) => {
-    // do something with remote, type & data
+    // do something with type & data
   }
 })
 
@@ -101,14 +101,19 @@ Populate `data.sender.name` and `data.sender.avatar` with data received by the `
 
 ## Verify
 
-Once you have done this, package your application and verify your steps from the `chatr` directory:
+Once you have done this verify your steps from the `chatr` directory:
 
 ```
-$ npm run package
 $ electron-adventure verify
 ```
 
-Don't forget to run `electron-forge package` after each change to your app.
+You can skip the build phase by using:
+
+```
+$ electron-adventure verify --nobuild
+```
+
+Although if you do this you should run `npm run package` first.
 
 ### Hints
 
@@ -125,6 +130,10 @@ import { ipcRenderer } from 'electron'
 // add this to /src/index.js
 import { ipcMain } from 'electron'
 ```
+
+## Hints
+
+* If your redux store becomes unusable, you can reset it from the settings page
 
 ## References
 

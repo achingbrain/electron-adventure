@@ -1,18 +1,10 @@
-# IPC
+# IPC part II
 
-In a typical Electron app, there are two processes: `main` & `renderer`.
-
-The `main` process is a [node.js](http://www.nodejs.com) process with access to the full node API.
-
-`renderer` on the other hand, is more like a web browser so cannot access the file system, the network (outside of XmlHttpRequest, WebSockets, etc).
-
-These two processes can communicate via Electron's built in [IPC](inter-process-communication) channel.
-
-We are going to listen for UDP broadcasts from the `main` process and pass those messages to the `renderer` for display.
+Now that we are sending messages into the ether it's time to start displaying them to the user.
 
 ## Prerequisites
 
-If you have not completed the `react` exercise, please clone the repo `achingbrain/electron-adventure-solution` and check out the `ipc-receive` tag.
+If you have not completed the `ipc-receive` exercise, please clone the repo `achingbrain/electron-adventure-solution` and check out the `ipc-receive` tag.
 
 ```
 $ git clone https://github.com/achingbrain/electron-adventure-solution
@@ -21,30 +13,56 @@ $ git checkout ipc-receive
 $ npm i
 ```
 
+## Relaying messages from `main` to `renderer`
 
-## Receiving messages
+In `/src/index.js` the `onMessage` callback passed to `udp-chat-server` should use [`contents.send`](contents-send) on `mainWindow.webContents` to send events from the `main` process to the `renderer` using the signature `send(type, data)`.
 
-## Adding udp-chat-server to `main`
+From the previous exercise, `onMessage` can be implemented like this:
 
-1.  Broadcasting messages
+```javascript
+import chat from 'udp-chat-server'
 
-
-
-
-Your app should use the ipcMain module to listen to events
-
-1.  Sending messages to the `renderer`
-
-In the `onMessage` callback, your app should use [`contents.send`](contents-send) on `mainWindow.webContents` to send events from the `main` process to the `renderer` using the signature `send(type, data)`.
-
-
-
-
-Once you have done this, package your application and verify your steps:
-
-```
-$ npm run package
-$ electron-adventure verify /path/to/my-first-app/out/my-first-app-darwin-x64/my-first-app.app/Contents/MacOS/my-first-app
+const send = chat({
+  onMessage: ({type, data}) => {
+    // do something with type and data
+  }
+})
 ```
 
-Don't forget to run `electron-forge package` after each change to your app.
+## Dispatching messages to the redux store
+
+The component `/src/containers/ipc` is a [Higher-Order Component]([higher-order-components]) that will listen for incoming IPC events and dispatch suitable actions to the redux store.  This will trigger renders which will display messages to the user.
+
+In the `/src/containers/ipc` constructor, implement listeners for `message` and `user` events from [`ipcRenderer`](ipc-renderer) with the listener signature `(event, data) => {}` and call the `addMessage` and `addMember` prop functions, passing the `data` argument to the prop function as the first argument.
+
+## Did we send that message?
+
+The `udp-chat-server` will relay all messages reguardless of source.  If we sent a message, we should render it differently.
+
+Change the `onMessage` callback handed to the `udp-chat-server` module to set `source = true` on incoming messages if the `data.sender.id` property is equal to the value returned from `electron-machine-id`.
+
+## Verify
+
+Once you have done this verify your steps from the `chatr` directory:
+
+```
+$ electron-adventure verify
+```
+
+You can skip the build phase by using:
+
+```
+$ electron-adventure verify --nobuild
+```
+
+Although if you do this you should run `npm run package` first.
+
+## Hints
+
+* If your redux store becomes unusable, you can reset it from the settings page
+
+## References
+
+1. [contents-send](https://electron.atom.io/docs/api/web-contents/#contentssendchannel-arg1-arg2-)
+1. [higher-order-components](https://facebook.github.io/react/docs/higher-order-components.html)
+1. [ipc-renderer](https://electron.atom.io/docs/api/ipc-renderer/)

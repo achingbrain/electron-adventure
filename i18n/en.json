@@ -49,6 +49,15 @@
         "message_type": "event.message.type should have been 'text' - it was '{{type}}'",
         "message_text": "event.data.message.text was not correct"
       }
+    },
+    "files": {
+      "pass": {
+        "file_id": "Server was passed correct file id"
+      },
+      "file": {
+        "file_id": "Server was passed wrong file id"
+      }
     }
+
   }
 }
