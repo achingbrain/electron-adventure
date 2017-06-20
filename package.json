@@ -29,5 +29,10 @@
   },
   "pre-commit": [
     "lint"
-  ]
+  ],
+  "standard": {
+    "globals": {
+      "store"
+    }
+  }
 }

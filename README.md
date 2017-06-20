@@ -2,7 +2,7 @@
 
 A Node.js workshop for learning Electron apps
 
-## Requirements
+## Requirements
 
 1. Node.js 8 & git installed
 1. Linux users may need to install libgconf-2-4

@@ -30,6 +30,11 @@ exercise.addVerifyProcessor(verifyProcessor(exercise, async (test) => {
 
         test.equals(query.file, fileId, 'file_id')
 
+        response.writeHead(302, {
+          location: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        })
+        response.end()
+
         resolve()
       } catch (error) {
         reject(error)
