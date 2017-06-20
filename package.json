@@ -31,8 +31,8 @@
     "lint"
   ],
   "standard": {
-    "globals": {
+    "globals": [
       "store"
-    }
+    ]
   }
 }
