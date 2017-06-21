@@ -2,11 +2,11 @@
 
 A Node.js workshop for learning Electron apps
 
-![electron-adventure](https://github.com/achingbrain/electron-adventure/tree/master/assets/screen-shot-1.png)
+![electron-adventure](https://raw.githubusercontent.com/achingbrain/electron-adventure/master/assets/screen-shot-1.png)
 
 You'll build this sweet IM app:
 
-![demo-app](https://github.com/achingbrain/electron-adventure/tree/master/assets/screen-shot-2.png)
+![demo-app](https://raw.githubusercontent.com/achingbrain/electron-adventure/master/assets/screen-shot-2.png)
 
 ## Requirements
 
