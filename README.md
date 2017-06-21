@@ -4,7 +4,7 @@ A Node.js workshop for learning Electron apps
 
 ![electron-adventure](https://raw.githubusercontent.com/achingbrain/electron-adventure/master/assets/screen-shot-1.png)
 
-You'll build this sweet IM app:
+You'll build this amazing IM app:
 
 ![demo-app](https://raw.githubusercontent.com/achingbrain/electron-adventure/master/assets/screen-shot-2.png)
 
