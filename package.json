@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": "git://github.com/achingbrain/eletron-adventure"
+    "url": "git://github.com/achingbrain/electron-adventure"
   },
   "license": "ISC",
   "bin": "./index.js",
