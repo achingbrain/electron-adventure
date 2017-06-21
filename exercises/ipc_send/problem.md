@@ -4,7 +4,7 @@ In a typical Electron app, there are two processes: `main` & `renderer`.
 
 The `main` process is a [node.js](http://www.nodejs.com) process with access to the full node API.
 
-`renderer` on the other hand, is more like a web browser so cannot access the file system, the network (outside of XmlHttpRequest, WebSockets, etc).
+`renderer` on the other hand, is more like a web browser so cannot access the file system or the network (apart from via XMLHttpRequests, WebSockets, etc).
 
 These two processes can communicate via Electron's built in [IPC](inter-process-communication) channel.
 
@@ -93,11 +93,33 @@ Add the chat server to your `main` process (e.g. to `/src/index.js`)
 
 Write some code so that when `ipcMain` receives a `message` event, the `send` function from `udp-chat-server` is called with an argument with the same fields as above.
 
-Populate `data.sender.name` and `data.sender.avatar` with data received by the `main` process from the `'user'` event.
+Populate `data.sender.name` and `data.sender.avatar` with data received by the `main` process from the `user` event.
 
 `data.sender.id` should be a unique-but-stable identifier - add the `electron-machine-id` module to your project for this.
 
 `data.id` is the message id and should be reasonably unique. Consider using the `shortid` module.
+
+## User status
+
+When the `main` process receives the `user` or `status` events, it should broadcast these as `user` messages.
+
+The message format for the `user` message is as follows:
+
+```
+send({
+  type: 'user',
+  data: {
+    sender: {
+      id: String,
+      name: String,
+      avatar: String,
+      status: String
+    }
+  }
+})
+```
+
+Update `/src/index.js` to broadcast `user` messages created from `status` and `user` IPC events.
 
 ## Verify
 
