@@ -12,7 +12,7 @@ We are going to listen for UDP broadcasts from the `main` process and pass those
 
 ## Prerequisites
 
-If you have not completed the `react` exercise, please clone the repo `achingbrain/electron-adventure-solution` and check out the `ipc-send` tag.
+If you have not completed the `react` exercise, please clone the repo `achingbrain/electron-adventure-solution` and check out `ipc-send`.
 
 ```
 $ git clone https://github.com/achingbrain/electron-adventure-solution

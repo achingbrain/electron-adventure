@@ -4,7 +4,7 @@ Now that we are sending messages into the ether it's time to start displaying th
 
 ## Prerequisites
 
-If you have not completed the `ipc-receive` exercise, please clone the repo `achingbrain/electron-adventure-solution` and check out the `ipc-receive` tag.
+If you have not completed the `ipc-receive` exercise, please clone the repo `achingbrain/electron-adventure-solution` and check out `ipc-receive`.
 
 ```
 $ git clone https://github.com/achingbrain/electron-adventure-solution

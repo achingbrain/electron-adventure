@@ -4,7 +4,7 @@ We are going to add support for ES6, React & LESS to our app.
 
 Since this is an electron workshopper we're going to use a repo that has already contains the relevant boilerplate.
 
-Clone the repo `achingbrain/electron-adventure-solution` and check out the `react` tag.
+Clone the repo `achingbrain/electron-adventure-solution` and check out `react`.
 
 ```
 $ git clone https://github.com/achingbrain/electron-adventure-solution
