@@ -2,6 +2,12 @@
 
 A Node.js workshop for learning Electron apps
 
+![electron-adventure](https://github.com/achingbrain/electron-adventure/tree/master/assets/screen-shot-1.png)
+
+You'll build this sweet IM app:
+
+![demo-app](https://github.com/achingbrain/electron-adventure/tree/master/assets/screen-shot-2.png)
+
 ## Requirements
 
 1. Node.js 8 & git installed

@@ -2,7 +2,11 @@
   "title": "Electron Adventure",
   "subtitle": "Forging ahead with Electron",
   "exercise": {
-    "hello_world": "My first Electron app"
+    "hello_world": "My first Electron app",
+    "react": "React & Electron",
+    "ipc_send": "Sending IPC messages",
+    "ipc_receive": "Receiving IPC messages",
+    "files": "Dealing with files"
   },
   "common": {
     "exercise": {
